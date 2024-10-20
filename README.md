@@ -1,3 +1,52 @@
+# slapsplat_G
+元リポジトリの[slapsplat](https://github.com/cnlohr/slapsplat)ではVRChatワールド向けの機能（AudioLinkなど）の機能があり、単体では使いにくかったため、  
+Forkして各種VRChat向け機能を削除・Shaderフォルダ構成などを再構築し、様々なプロジェクトで扱いやすいように編集しました。
+
+# Unityで表示するまで
+## 0.UnityPackageインポート
+[リリースページ](https://github.com/GONBEEEproject/slapsplat_G/releases)から最新の.unitypackageをダウンロードし、プロジェクトに展開します。
+
+## 1.plyデータの変換
+.plyファイルをUnityで描画する用の各種.assetに変換します。  
+`process`ディレクトリに移動し、`CreateSplatAssets.bat`を利用します。  
+同じディレクトリ内にplyデータを配置し、以下のようにコマンドを叩きます。  
+```
+CreateSplatAssets.bat sample.ply
+```
+生成に成功すると`sample_result`フォルダ内に各種アセットが保存されます。  
+このフォルダごとUnityにインポートしましょう。
+
+
+## 2.UnityでMaterialを作る
+Material作成後、`SlapSplat_G/SlapSplat_G`を選択し、  
+`Geo Data` `Order Data`にそれぞれ`sample_geo` `sample_order`を適用します。  
+
+### 詳細パラメータについて
+#### Custom Scale
+GaussianSplattingの1カケラの大きさを調整できます。  
+0.9～1.1くらいがちょうどいい気がします。（物による）  
+
+#### gamma
+ガンマ値です。基本的に1で大丈夫です。
+
+#### emission amount 
+カケラ自体の発光度合いです。  
+下記の`brightness`とセットで調整になりますが、  
+**emissionをブチ上げてbrightnessを下げる**とplyの元データのライティングに近くなります。
+
+#### brightness
+全体の発光度合いです。  
+こちらは0.1～0.3程度に抑えて、`emission amount`で調整すると意図した描画になりやすい気がします。
+
+## 3.シーンに配置する
+`sample_result`フォルダ内にある`sample_mesh`をシーンにD&DするとMeshFilterのみを持つオブジェクトが出来ます。  
+`MeshRenderer`をAddし、上で作ったMaterialを与えるとシーンに描画されます。
+
+BOOM It should appear.  
+
+以下元リポジトリのReadme
+---
+
 # vrcsplat
 
 Ever wonder what happens if you take the gaussian out of gaussian splats and render them in VRChat?  Well, wonder no more! This project takes gaussian splats and turns them into a bunch of paint swatches.
