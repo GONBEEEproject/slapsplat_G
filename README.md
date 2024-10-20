@@ -1,6 +1,8 @@
 # slapsplat_G
-元リポジトリの[slapsplat](https://github.com/cnlohr/slapsplat)ではVRChatワールド向けの機能（AudioLinkなど）の機能があり、単体では使いにくかったため、  
-Forkして各種VRChat向け機能を削除・Shaderフォルダ構成などを再構築し、様々なプロジェクトで扱いやすいように編集しました。
+元リポジトリの[slapsplat](https://github.com/cnlohr/slapsplat)ではVRChatワールド向けの機能（AudioLinkなど）の機能があり、  
+単体では使いにくかったため、  
+Forkして各種VRChat向け機能を削除・Shaderフォルダ構成などを再構築し、  
+様々なプロジェクトで扱いやすいように編集しました。
 
 # Unityで表示するまで
 ## 0.UnityPackageインポート
@@ -20,6 +22,8 @@ CreateSplatAssets.bat sample.ply
 ## 2.UnityでMaterialを作る
 Material作成後、`SlapSplat_G/SlapSplat_G`を選択し、  
 `Geo Data` `Order Data`にそれぞれ`sample_geo` `sample_order`を適用します。  
+![SnapCrab_NoName_2024-10-20_22-39-49_No-00](https://github.com/user-attachments/assets/e795f819-0500-46c4-9f70-cac3766bcaf3)
+
 
 ### 詳細パラメータについて
 #### Custom Scale
@@ -39,10 +43,15 @@ GaussianSplattingの1カケラの大きさを調整できます。
 こちらは0.1～0.3程度に抑えて、`emission amount`で調整すると意図した描画になりやすい気がします。
 
 ## 3.シーンに配置する
-`sample_result`フォルダ内にある`sample_mesh`をシーンにD&DするとMeshFilterのみを持つオブジェクトが出来ます。  
+`sample_result`フォルダ内にある`sample_mesh`をシーンにD&Dすると`MeshFilter`のみを持つオブジェクトが出来ます。  
 `MeshRenderer`をAddし、上で作ったMaterialを与えるとシーンに描画されます。
 
 BOOM It should appear.  
+
+![SnapCrab_NoName_2024-10-20_22-42-0_No-00](https://github.com/user-attachments/assets/5fe5ccce-2181-4384-9c62-a06dc1dda50e)
+
+
+
 
 以下元リポジトリのReadme
 ---
