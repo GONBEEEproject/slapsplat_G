@@ -31,14 +31,15 @@ UNITY_VERTEX_OUTPUT_STEREO
 
 struct g2f {
 float4 vertex : SV_POSITION;
-#if _Obeloid
 float3 localpt : LOCALPT;
-float3 campt : CAMPT;
-float3 campd : CAMPD;
-float3 camwithorthoworld : CWOW;
 nointerpolation float3 localscale : LSCALE;
 nointerpolation float4 localrot : LROT;
 nointerpolation float3 localpos : LPOS;
+#if _Obeloid
+float3 campt : CAMPT;
+float3 campd : CAMPD;
+float3 camwithorthoworld : CWOW;
+
 #else
 /*sample*/ float2 tc : TEXCOORD0; // sample can "force multisampling" Thanks, Bgolus https://forum.unity.com/threads/questions-on-multi-sampling.1398895/ 
 #endif
